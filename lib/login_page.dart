@@ -47,11 +47,17 @@ class LoginPage extends StatelessWidget {
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  print('Pressed on the URL!');
+              GestureDetector(
+                onTap: () {
+                  //todo: Navigate to browser
+                  print('Link clicked!');
                 },
-                child: Text('https://poojabhaumik.com'),
+                child: Column(
+                  children: [
+                    Text('Find us on'),
+                    Text('https://poojabhaumik.com'),
+                  ],
+                ),
               ),
             ],
           ),
