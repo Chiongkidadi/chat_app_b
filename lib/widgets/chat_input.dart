@@ -1,45 +1,49 @@
-import 'package:chat_app/widgets/chat_bubble.dart';
-import 'package:chat_app/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+class ChatInput extends StatelessWidget {
+  ChatInput({Key? key}) : super(key: key);
+
+  final chatMessageController = TextEditingController();
+
+  void onSendButtonPressed() {
+    print('ChatMessage: ${chatMessageController.text}');
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text('Hi Pooja!'),
-        actions: [
+    return Container(
+      height: 100,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           IconButton(
-            onPressed: () {
-              print('Icon pressed!');
-            },
-            icon: Icon(Icons.logout),
+            onPressed: () {},
+            icon: Icon(Icons.add, color: Colors.white),
+          ),
+          Expanded(
+            child: TextField(
+              keyboardType: TextInputType.multiline,
+              maxLines: 5,
+              minLines: 1,
+              controller: chatMessageController,
+              textCapitalization: TextCapitalization.sentences,
+              style: TextStyle(color: Colors.white),
+              decoration: InputDecoration(
+                hintText: "Type your message",
+                hintStyle: TextStyle(color: Colors.blueGrey),
+                border: InputBorder.none,
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: onSendButtonPressed,
+            icon: Icon(Icons.send, color: Colors.white),
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            //TODO: Create a dynamic sized list
-            child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return ChatBubble(
-                  alignment:
-                      index % 2 == 0
-                          ? Alignment.centerLeft
-                          : Alignment.centerRight,
-                  message: "Hello, this is Pooja!",
-                );
-              },
-            ),
-          ),
-          ChatInput(),
-        ],
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
     );
   }
