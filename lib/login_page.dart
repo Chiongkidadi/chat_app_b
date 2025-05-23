@@ -56,11 +56,8 @@ class LoginPage extends StatelessWidget {
                   color: Colors.blueGrey,
                 ),
               ),
-              Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-                height: 200,
-              ),
-              //TODO: Extract the common text-fields out to a reusable widget
+              //TODO: Add correct asset file
+              Image.asset('assets/illustration.png', height: 200),
               Form(
                 key: _formkey,
                 child: Column(
