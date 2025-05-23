@@ -1,4 +1,5 @@
-import 'package:chat_app/chat_page.dart';
+import 'package:chat_app/utils/textfield_styles.dart';
+import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -11,7 +12,6 @@ class LoginPage extends StatelessWidget {
       print(userNameController.text);
       print(passwordController.text);
 
-      //TODO: Replace the route instead of pushing
       Navigator.pushReplacementNamed(
         context,
         '/chat',
@@ -59,11 +59,13 @@ class LoginPage extends StatelessWidget {
                 'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
                 height: 200,
               ),
+              //TODO: Extract the common text-fields out to a reusable widget
               Form(
                 key: _formkey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    LoginTextField(
+                      hintText: "Enter your username",
                       validator: (value) {
                         if (value != null &&
                             value.isNotEmpty &&
@@ -75,21 +77,12 @@ class LoginPage extends StatelessWidget {
                         return null;
                       },
                       controller: userNameController,
-                      decoration: InputDecoration(
-                        hintText: 'Add your username',
-                        hintStyle: TextStyle(color: Colors.blueGrey),
-                        border: OutlineInputBorder(),
-                      ),
                     ),
                     SizedBox(height: 24),
-                    TextFormField(
+                    LoginTextField(
+                      hasAsterisks: true,
                       controller: passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        hintText: 'Type your password',
-                        hintStyle: TextStyle(color: Colors.blueGrey),
-                        border: OutlineInputBorder(),
-                      ),
+                      hintText: 'Enter your password',
                     ),
                   ],
                 ),
