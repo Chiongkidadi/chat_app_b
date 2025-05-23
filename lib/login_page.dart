@@ -13,11 +13,8 @@ class LoginPage extends StatelessWidget {
       print(userNameController.text);
       print(passwordController.text);
 
-      Navigator.pushReplacementNamed(
-        context,
-        '/chat',
-        arguments: '${userNameController.text}',
-      );
+      Navigator.pushReplacementNamed(context, '/chat',
+          arguments: '${userNameController.text}');
       print('login successful!');
     } else {
       print('not successful!');
@@ -41,23 +38,24 @@ class LoginPage extends StatelessWidget {
                 'Let\'s sign you in!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 0.5,
-                ),
+                    fontSize: 30,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5),
               ),
               Text(
                 'Welcome back! \n You\'ve been missed!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                  color: Colors.blueGrey,
-                ),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    color: Colors.blueGrey),
               ),
               //TODO: Add correct asset file
-              Image.asset('assets/illustration.png', height: 200),
+              Image.asset(
+                'assets/illustration.png',
+                height: 200,
+              ),
               Form(
                 key: _formkey,
                 child: Column(
@@ -87,14 +85,13 @@ class LoginPage extends StatelessWidget {
               ),
               verticalSpacing(24),
               ElevatedButton(
-                onPressed: () {
-                  loginUser(context);
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
-                ),
-              ),
+                  onPressed: () {
+                    loginUser(context);
+                  },
+                  child: Text(
+                    'Login',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+                  )),
               GestureDetector(
                 onTap: () {
                   //todo: Navigate to browser
@@ -106,7 +103,7 @@ class LoginPage extends StatelessWidget {
                     Text('https://poojabhaumik.com'),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
