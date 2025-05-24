@@ -1,7 +1,7 @@
 import 'package:chat_app/utils/spaces.dart';
-import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -13,11 +13,8 @@ class LoginPage extends StatelessWidget {
       print(userNameController.text);
       print(passwordController.text);
 
-      Navigator.pushReplacementNamed(
-        context,
-        '/chat',
-        arguments: '${userNameController.text}',
-      );
+      Navigator.pushReplacementNamed(context, '/chat',
+          arguments: '${userNameController.text}');
       print('login successful!');
     } else {
       print('not successful!');
@@ -26,6 +23,8 @@ class LoginPage extends StatelessWidget {
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final _mainUrl = "https://poojabhaumik.com";
 
   @override
   Widget build(BuildContext context) {
@@ -41,26 +40,23 @@ class LoginPage extends StatelessWidget {
                 'Let\'s sign you in!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 0.5,
-                ),
+                    fontSize: 30,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5),
               ),
               Text(
                 'Welcome back! \n You\'ve been missed!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                  color: Colors.blueGrey,
-                ),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    color: Colors.blueGrey),
               ),
-              Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+              Image.asset(
+                'assets/illustration.png',
                 height: 200,
               ),
-              //TODO: Extract the common text-fields out to a reusable widget
               Form(
                 key: _formkey,
                 child: Column(
@@ -90,26 +86,27 @@ class LoginPage extends StatelessWidget {
               ),
               verticalSpacing(24),
               ElevatedButton(
-                onPressed: () {
-                  loginUser(context);
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
-                ),
-              ),
+                  onPressed: () {
+                    loginUser(context);
+                  },
+                  child: Text(
+                    'Login',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+                  )),
               GestureDetector(
-                onTap: () {
-                  //todo: Navigate to browser
+                onTap: () async {
                   print('Link clicked!');
+                  if (!await launch(_mainUrl)) {
+                    throw 'Could not launch this!';
+                  }
                 },
                 child: Column(
                   children: [
                     Text('Find us on'),
-                    Text('https://poojabhaumik.com'),
+                    Text(_mainUrl),
                   ],
                 ),
-              ),
+              )
             ],
           ),
         ),
