@@ -7,13 +7,13 @@ class LoginTextField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final bool hasAsterisks;
 
-  const LoginTextField({
-    Key? key,
-    required this.controller,
-    required this.hintText,
-    this.validator,
-    this.hasAsterisks = false,
-  }) : super(key: key);
+  const LoginTextField(
+      {Key? key,
+      required this.controller,
+      required this.hintText,
+      this.validator,
+      this.hasAsterisks = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +24,9 @@ class LoginTextField extends StatelessWidget {
       },
       controller: controller,
       decoration: InputDecoration(
-        hintText: 'Add your username',
-        hintStyle: ThemeTextStyle.loginTextFieldStyle,
-        border: OutlineInputBorder(),
-      ),
+          hintText: 'Add your username',
+          hintStyle: ThemeTextStyle.loginTextFieldStyle,
+          border: OutlineInputBorder()),
     );
   }
 }
