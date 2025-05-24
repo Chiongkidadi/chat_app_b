@@ -23,15 +23,21 @@ class _CounterStatefulState extends State<CounterStateful> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Counter')),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: widget.buttonColor,
-        child: Icon(Icons.add),
-        onPressed: () {
-          increment();
-        },
-      ),
-      body: Center(child: Text('$counter', style: TextStyle(fontSize: 30))),
-    );
+        appBar: AppBar(
+          title: Text('Counter'),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: widget.buttonColor,
+          child: Icon(Icons.add),
+          onPressed: () {
+            increment();
+          },
+        ),
+        body: Center(
+          child: Text(
+            '$counter',
+            style: TextStyle(fontSize: 30),
+          ),
+        ));
   }
 }
